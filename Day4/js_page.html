@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Small page</title>
+</head>
+
+<body>
+    <h1>Hello World</h1>
+    <!-- <h1>HelloWorld1</h1>
+
+    <h1>HelloWorld2</h1> -->
+
+    <input id="nameInput" placeholder="Enter your name">
+    <h4 id="greeting"></h4>
+
+    <button id="mybtn">Submit</button>
+
+    <h3 id="display"></h3>
+
+    <!-- <h2>Live Character Counter</h2> -->
+    <!-- <textarea placeholder="Enter your text"></textarea> -->
+
+
+
+
+    <script>
+        let playerName = "Alex";
+        console.log(`Hello ${playerName}`);
+        let score = 0;
+        score++;
+        console.log(score);
+        isLoggedIn = true;
+        console.log(`${playerName} has score : ${score}`);
+
+        // your profile
+        const firstName = "Sumeet";
+        const lastName = "Kumar";
+        const studentId = "B251015";
+        const year = 2026;
+        const cgpa = 8;
+
+        console.log(`---Student Profile---`);
+        console.log(`Name: ${firstName} ${lastName}`);
+        console.log(`ID: ${studentId}`);
+        console.log(`Year ${year}`);
+        console.log(`CGPA: ${cgpa}`);
+
+        function greetStudent(argument) {
+            console.log(`hello ${argument}`);
+        }
+        greetStudent("Alex");
+
+        function gStudent(arg) {
+            return `heyy ${arg}`;
+
+        }
+        console.log(gStudent("Sahil"));
+
+        function calculateTotal(price, tax) {
+            return price + (price % tax);
+        }
+        console.log(calculateTotal(100, 18));
+
+        const heading = document.querySelector("h1");
+        console.log(heading.textContent);
+        heading.textContent = "Js is live";
+        heading.style.color = "blue";
+        // heading.classlist.add("highlight");
+
+        // button
+        const btn = document.querySelector("#mybtn");
+        btn.addEventListener("click", function () {
+            let count = parseInt(btn.dataset.count || 0);
+            count++;
+            btn.dataset.count = count;
+            document.querySelector("#display").textContent = `Clicks : ${count}`;
+        });
+
+        // input event
+        document.querySelector("#nameInput").addEventListener("input", (e) => {
+            document.querySelector("#greeting").textContent = `Hello ${e.target.value}!` ;
+        });
+    </script>
+</body>
+
+</html>

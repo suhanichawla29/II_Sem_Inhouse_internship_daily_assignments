@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dark {
+            color: black;
+            background-color: rgb(27, 26, 26);
+        }
+        h1 {
+            color: rgb(114, 83, 42);
+        }
+        .btn {
+            margin-left:520px;
+        }
+        ul {
+            display: flex;
+            
+        }
+        ul li {
+            margin: 0 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    
+    
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+    <button class="btn" onclick="toggleMode()">Dark Mode</button>
+    </nav>
+    <h1>Login Page1</h1>
+        </div>
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+</body>
+</html>

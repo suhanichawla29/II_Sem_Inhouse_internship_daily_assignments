@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>College Admission Form</title>
+
+<style>
+body{
+    background-color:beige;
+}
+
+.container{
+    width:400px;
+    margin:40px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    border:1px solid gray;
+}
+
+h2{
+    text-align:center;
+    color:darkblue;
+}
+
+label{
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:8px;
+    margin-top:5px;
+    border:1px solid gray;
+    border-radius:5px;
+    box-sizing:border-box;
+}
+
+input[type="radio"]{
+    width:auto;
+}
+
+.btn{
+    margin-top:15px;
+}
+
+ul{
+    display:flex;
+}
+
+ul li{
+    margin:0 25px;
+}
+
+.error{
+    color:red;
+    font-size:14px;
+    display:block;
+    margin-top:3px;
+}
+
+/* Dark Mode */
+.dark{
+    background-color:rgb(27,26,26);
+    color:white;
+}
+
+.dark .container{
+    background-color:#333;
+    color:white;
+    border:1px solid #666;
+}
+
+.dark input,
+.dark select,
+.dark textarea{
+    background-color:#444;
+    color:white;
+    border:1px solid #777;
+}
+
+.dark h2,
+.dark a{
+    color:white;
+}
+
+.dark button
+.dark input[type="submit"]{
+    background-color:#555;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+
+    <button onclick="toggleMode()">Dark Mode</button>
+</nav>
+
+<div class="container">
+
+<h2>College Admission Form</h2>
+
+<form onsubmit="return submitForm()">
+
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter your full name">
+<span id="nameError" class="error"></span>
+
+<label>Email</label>
+<input type="email" id="email" placeholder="Enter your email">
+<span id="emailError" class="error"></span>
+
+<label>Phone Number</label>
+<input type="tel" id="phone" placeholder="Enter your phone number">
+<span id="phoneError" class="error"></span>
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+<span id="dobError" class="error"></span>
+
+<label>Gender</label>
+<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+<input type="radio" name="gender" value="other"> Other
+<span id="genderError" class="error"></span>
+
+<label>Course</label>
+<select id="course">
+    <option value="">Select Course</option>
+    <option>B.Tech CSE</option>
+    <option>B.Tech AI</option>
+    <option>BCA</option>
+    <option>BBA</option>
+</select>
+<span id="courseError" class="error"></span>
+
+<label>Address</label>
+<textarea id="address" rows="4" placeholder="Enter your address"></textarea>
+<span id="addressError" class="error"></span>
+
+<label>Password</label>
+<input type="password" id="password" placeholder="Create password">
+<span id="passwordError" class="error"></span>
+
+<input type="submit" value="Submit" class="btn">
+<input type="submit" value="Submit">
+<input type="reset" value="Reset">
+
+<p id="submitCount">Form Submitted: 0 times</p>
+</form>
+</div>
+
+
+<script>
+function toggleMode(){
+    document.body.classList.toggle("dark");
+}
+
+function validateForm(){
+
+    let valid = true;
+
+    document.querySelectorAll(".error").forEach(function(error){
+        error.innerHTML = "";
+    });
+
+    if(document.getElementById("name").value.trim() == ""){
+        document.getElementById("nameError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("email").value.trim() == ""){
+        document.getElementById("emailError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("phone").value.trim() == ""){
+        document.getElementById("phoneError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("dob").value == ""){
+        document.getElementById("dobError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.querySelector('input[name="gender"]:checked') == null){
+        document.getElementById("genderError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("course").value == ""){
+        document.getElementById("courseError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("address").value.trim() == ""){
+        document.getElementById("addressError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    if(document.getElementById("password").value.trim() == ""){
+        document.getElementById("passwordError").innerHTML = "This field is required";
+        valid = false;
+    }
+
+    return valid;
+}
+let count = 0;
+
+function submitForm() {
+    if (validateForm()) {
+        count++;
+        document.getElementById("submitCount").innerHTML =
+            "Form Submitted: " + count + " times";
+        return true;
+    }
+    return false;
+}
+</script>
+
+</body>
+</html>
